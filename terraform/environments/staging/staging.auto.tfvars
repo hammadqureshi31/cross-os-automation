@@ -1,0 +1,8 @@
+environment         = "staging"
+instance_type       = "t3.micro"
+ami_id              = "ami-0aba19e56f3eaec05"
+key_name            = "cross-os-automation"
+vpc_cidr            = "10.1.0.0/16"
+public_subnet_cidr  = "10.1.1.0/24"
+private_subnet_cidr = "10.1.2.0/24"
+aws_region          = "eu-north-1"
