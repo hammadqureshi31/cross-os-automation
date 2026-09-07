@@ -1,0 +1,20 @@
+---
+- name: Install Nginx on Debian-based systems
+  apt:
+    name: "{{ nginx_package }}"
+    state: present
+    update_cache: true
+  when: ansible_os_family == "Debian"
+
+- name: Install Nginx on Redhat-based systems
+  dnf:
+    name: nginx
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Start and enable Nginx Service
+  service:
+    name: "{{ nginx_package }}"
+    state: started
+    enabled: true
+

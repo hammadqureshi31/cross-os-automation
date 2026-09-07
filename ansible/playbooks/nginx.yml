@@ -1,0 +1,7 @@
+---
+- name: Configure Nginx
+  hosts: tag_dev_ec2
+  become: true
+
+  roles:
+    - nginx

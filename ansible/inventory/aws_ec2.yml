@@ -1,0 +1,21 @@
+---
+plugin: amazon.aws.aws_ec2
+
+profile: default
+
+regions: 
+  - eu-north-1
+
+filters:
+  instance-state-name: running
+
+keyed_groups:
+  - key: tags.Name
+    prefix: tag
+  
+compose:
+  ansible_user: >-
+    {{ 'ubuntu' if tags.Name in ['cross-os-automation', 'dev-ec2']
+       else 'ec2-user' if tags.Name == 'cross-os-amazon-linux'
+       else omit }}
+  ansible_host: public_ip_address
